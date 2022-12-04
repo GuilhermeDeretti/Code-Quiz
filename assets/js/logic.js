@@ -68,22 +68,23 @@ function startGame() {
 
 function nextQuestion(event){
     selectedQuestion++;
+    //check if is the wrong answer then subtract 10 sec from timer
     if(!event.currentTarget.dataset.correctAnwser){
         secondsLeft -= 10;
-    }
-    que = event.currentTarget.parentElement.children;    
-    for(i = 0; i < que.length; i++){ 
-        que[i].setAttribute("style", "display: none;");
-    }    
+    }         
     getQuestion();
-    
 }
+
 function getQuestion() {
-    questionsArray[selectedQuestion].question;
+    //clear old choices
+    choicesEl.innerHTML = ''; 
+    //get question and add to the Title
     questionTitleEl.textContent = questionsArray[selectedQuestion].question;
+    //get all possible answer/choices for this question
     for(i = 0; i < questionsArray[selectedQuestion].choice.length; i++){ 
         var choices = document.createElement("button");
         choices.textContent = questionsArray[selectedQuestion].choice[i][0];
+        // store in the html if is right/wrong answer as dataset.
         choices.setAttribute("data-correctAnswer", questionsArray[selectedQuestion].choice[i][1]);
         choicesEl.appendChild(choices);
         choices.addEventListener("click", nextQuestion);
