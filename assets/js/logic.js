@@ -60,9 +60,7 @@ function setTime() {
             finalScoreSpanEl.textContent = score;
             questionsEl.setAttribute("class", "hide");
             endScreenEl.setAttribute("class", "start");
-
         }
-
     }, 1000);
 }
 
@@ -79,12 +77,18 @@ function startGame() {
 
 
 function nextQuestion(event) {    
-    //check if is the right answer to add to score otherwise subtract 10 sec from timer
-    console.log(event.currentTarget.getAttribute("data-correctAnswer"));
+    //if right answer add to score otherwise subtract 10 sec from timer   
+    var message = document.createElement("p")
     if ( event.currentTarget.getAttribute("data-correctAnswer") === 'true') {
         score += 5;
-    }else secondsLeft -= 10;
-    getQuestion();
+        message.textContent = "Right answer";
+    }else{
+        message.textContent = "Wrong answer";
+        secondsLeft -= 10;
+    };
+    event.currentTarget.parentElement.appendChild(message);
+    //wait 1 second then get next question
+    setTimeout(getQuestion, 1000);
 }
 
 function getQuestion() {
