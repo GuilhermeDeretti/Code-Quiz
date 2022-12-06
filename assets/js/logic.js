@@ -7,6 +7,8 @@ var choicesEl = document.querySelector("#choices");
 var endScreenEl = document.querySelector("#end-screen");
 var submitButtonEl = document.querySelector("#submit");
 var finalScoreSpanEl = document.querySelector("#final-score");
+var inputEl = document.querySelector("#initials");
+var bodyEl = document.querySelector("body");
 
 var score = 0;
 var secondsLeft = 0;
@@ -44,7 +46,33 @@ startButtonEl.addEventListener("click", startGame);
 submitButtonEl.addEventListener("click", submitScore);
 
 function submitScore() {
+    if(inputEl.value.length < 2){
+        var message = document.createElement("h3")
+        message.setAttribute("class", "wrapper")
+        message.setAttribute("style", "color: red;")
+        message.textContent = "Name Cannot be less than 2 characters";
+        bodyEl.appendChild(message);
+    } else {
+        // save data
+        var user = [];  
+        var scoreTrack = [];
+        var storagedUsers = JSON.parse(localStorage.getItem("user"));
+        var storagedScore = JSON.parse(localStorage.getItem("score"));
+        //if not undefined (there is registered names keep them)
+        if(storagedScore){
+            user = storagedUsers;
+            scoreTrack = storagedScore;
+        } 
+        //add new register to array
+        user.push(inputEl.value.trim());        
+        scoreTrack.push(score);
+        //add to localstorage
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("score", JSON.stringify(scoreTrack));       
 
+        //call highscores
+        window.location.href="highscores.html";
+    }
 }
 
 function setTime() {
@@ -56,7 +84,7 @@ function setTime() {
         if (secondsLeft === 0 || secondsLeft < 0 || selectedQuestion > questionsArray.length) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
-            // Calls function to Show score;
+            //show score and rank register
             finalScoreSpanEl.textContent = score;
             questionsEl.setAttribute("class", "hide");
             endScreenEl.setAttribute("class", "start");
@@ -78,7 +106,7 @@ function startGame() {
 
 function nextQuestion(event) {    
     //if right answer add to score otherwise subtract 10 sec from timer   
-    var message = document.createElement("p")
+    var message = document.createElement("h2")
     if ( event.currentTarget.getAttribute("data-correctAnswer") === 'true') {
         score += 5;
         message.textContent = "Right answer";
