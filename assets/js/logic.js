@@ -46,7 +46,7 @@ startButtonEl.addEventListener("click", startGame);
 submitButtonEl.addEventListener("click", submitScore);
 
 function submitScore() {
-    if(inputEl.value.length < 2){
+    if (inputEl.value.length < 2) {
         var message = document.createElement("h3")
         message.setAttribute("class", "wrapper")
         message.setAttribute("style", "color: red;")
@@ -54,24 +54,24 @@ function submitScore() {
         bodyEl.appendChild(message);
     } else {
         // save data
-        var user = [];  
+        var user = [];
         var scoreTrack = [];
         var storagedUsers = JSON.parse(localStorage.getItem("user"));
         var storagedScore = JSON.parse(localStorage.getItem("score"));
         //if not undefined (there is registered names keep them)
-        if(storagedScore){
+        if (storagedScore) {
             user = storagedUsers;
             scoreTrack = storagedScore;
-        } 
+        }
         //add new register to array
-        user.push(inputEl.value.trim());        
+        user.push(inputEl.value.trim());
         scoreTrack.push(score);
         //add to localstorage
         localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("score", JSON.stringify(scoreTrack));       
+        localStorage.setItem("score", JSON.stringify(scoreTrack));
 
         //call highscores
-        window.location.href="highscores.html";
+        window.location.href = "highscores.html";
     }
 }
 
@@ -104,13 +104,13 @@ function startGame() {
 }
 
 
-function nextQuestion(event) {    
+function nextQuestion(event) {
     //if right answer add to score otherwise subtract 10 sec from timer   
     var message = document.createElement("h2")
-    if ( event.currentTarget.getAttribute("data-correctAnswer") === 'true') {
+    if (event.currentTarget.getAttribute("data-correctAnswer") === 'true') {
         score += 5;
         message.textContent = "Right answer";
-    }else{
+    } else {
         message.textContent = "Wrong answer";
         secondsLeft -= 10;
     };
@@ -121,7 +121,7 @@ function nextQuestion(event) {
 
 function getQuestion() {
     //clear old choices
-    choicesEl.innerHTML = '';    
+    choicesEl.innerHTML = '';
     if (questionsArray[selectedQuestion]) {
         //get question and add to the Title
         questionTitleEl.textContent = questionsArray[selectedQuestion].question;

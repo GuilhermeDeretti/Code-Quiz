@@ -1,16 +1,38 @@
 # Code-Quiz
 
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+## Description
 
-Code quiz requirements:
+The goal of this website was to practise the new learn javascript API using DOM, events, and localStorage.
+By learning and testing your knowledge, the Code Quiz Application creates an interactive experience in a Web page.
 
-* A start button
-    * when clicked a timer starts and the first question appears.
-        * Questions contain buttons for each answer.
-            * When question-button is clicked, the next question appears
-            * If the answer clicked was incorrect then subtract time from the clock
-* The quiz should end when all questions are answered or the timer reaches 0.
-* When the game ends, it should display their score and give the user the ability to save their initials and their score
+**Note:** This project is still under development and will receive updates related to refactoring in the javascript files to make it Modular.
 
-![Animation of code quiz. Presses button to start quiz. Clicks the button for the answer to each question, displays if answer was correct or incorrect. Quiz finishes and displays high scores. User adds their intials, then clears their intials and starts over.](../assets/08-web-apis-challenge-demo.gif)
+## instalation
+
+N/A
+
+## Usage
+
+* Start the game by pressing in the button Start Quiz  
+![Start Screen](./assets/img/first.png)
+
+* The question show's up and you have a timer to choose the right answer, if you get the wrong one you lose 10 seconds on the clock.  
+![question Screen](./assets/img/second.png)
+
+* After answering all questions or the time runs out, you will see your score and a box to put your name so you can be in the scores and see the other scores.  
+![score and register screen](./assets/img/third.png)
+
+* In the Scores page you can see all scores  
+![score screen](./assets/img/forth.png)
+
+## Credits
+
+N/A
+
+## License
+
+Available under the MIT license. See the LICENSE file for more info.
+
+## Test
+
+[Deployed application](https://guilhermederetti.github.io/Code-Quiz/)
