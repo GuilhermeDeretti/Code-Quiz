@@ -28,18 +28,18 @@ class Question {
 }
 // Create first question and choices options
 var questionsArray = [
-    new Question("first question"
-        , "fist choice", false
-        , "second choice", false
-        , "third choice", true
-        , "forth choice", false
+    new Question("localStorage stores data as the followin type ________"
+        , "Boolean", false
+        , "Integer", false
+        , "String", true
+        , "Undefined", false
     ),
 
-    new Question("second question"
-        , "second fist choice", true
-        , "second second choice", false
-        , "second third choice", false
-        , "second forth choice", false
+    new Question("What does the following code will return: console.log('test'.length);"
+        , "print value '4' on the console", true
+        , "print value undefined on the console log", false
+        , "error", false
+        , "none of the above", false
     )];
 
 startButtonEl.addEventListener("click", startGame);
@@ -76,7 +76,7 @@ function submitScore() {
 }
 
 function setTime() {
-    secondsLeft = 70;
+    secondsLeft = 30;
     var timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = secondsLeft;
