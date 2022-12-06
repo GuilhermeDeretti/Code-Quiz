@@ -2,8 +2,8 @@
 
 ## Description
 
-This website was created with the objective of practicing the new learn javascript API using DOM, events and localStorage.
-The Code Quiz Application, brings a interactive experience in a Web page, by learning and testing your knowlege.
+The goal of this website was to practise the new learn javascript API using DOM, events, and localStorage.
+By learning and testing your knowledge, the Code Quiz Application creates an interactive experience in a Web page.
 
 **Note:** This project is still under development and will receive updates related to refactoring in the javascript files to make it Modular.
 
